@@ -11,4 +11,8 @@ module.exports = function(app, io) {
 		response.render('pages/page1');
 	});
 
+	app.get('/angular', function(request, response){
+		response.render('pages/angular');
+	});
+
 };
