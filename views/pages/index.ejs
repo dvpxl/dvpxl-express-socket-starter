@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../partials/header.ejs %>
+</head>
+
+<body>
+
+<h1>Index</h1>
+
+<div id='heartbeat'>
+	hearbeat
+</div>
+
+<script>  
+
+ $(document).ready(function(){
+
+	 console.log("jquery success loaded");
+
+	 var socket = io();
+	 socket.on('connect', function(data) {
+	    socket.emit('join', 'Hello World from client');
+	 });
+	 socket.on('broad', function(data) {
+	         $('#future').html(data);
+	 });
+
+	 socket.on('heartbeat', function(data){
+	 	$('#heartbeat').html(JSON.stringify(data));
+	 });
+
+});
+
+ </script>
+
+ </body>
+ </html>
